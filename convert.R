@@ -1,7 +1,7 @@
-xml_file = 'kbroman.xml'
+xml_file = 'symplyepistat.xml'
 
-old_url = 'https?://kbroman.wordpress.com'
-new_url = 'http://kbroman.org/blog'
+old_url = 'https?://symplyepistat.wordpress.com/'
+new_url = 'http://IfyEpiCorner'
 
 # use the new domain
 blogdown:::process_file(xml_file, function(x) {
@@ -18,14 +18,14 @@ blogdown:::process_file(xml_file, function(x) {
 # Markdown posts to the post/ directory here.
 {
   # check if there are any XML problems (should be rare)
-  system('xmllint --noout *.xml')
+ # system('xmllint --noout *.xml')
 
-  unlink(c('post', 'exitwp/build', 'exitwp/wordpress-xml/*.xml'), recursive = TRUE)
-  file.copy(xml_file, 'exitwp/wordpress-xml/')
+ # unlink(c('post', 'exitwp/build', 'exitwp/wordpress-xml/*.xml'), recursive = TRUE)
+  #file.copy(xml_file, 'exitwp/wordpress-xml/')
 
   # I'm using the Homebrew version of Python, and I need its bin path to go before /usr/bin
-  if (blogdown:::is_osx()) {
-    Sys.setenv(PATH = paste('/usr/local/opt/python/libexec/bin', Sys.getenv('PATH'), sep = ':'))
+  #if (blogdown:::is_osx()) {
+   # Sys.setenv(PATH = paste('/usr/local/opt/python/libexec/bin', Sys.getenv('PATH'), sep = ':'))
   }
 
   # you may need to install a few packages first:
@@ -44,7 +44,7 @@ blogdown:::collect_yaml('author', 'post')
 
 # map author id's to author names
 authors = c(
-  kbroman = 'Karl Broman'
+  kbroman = 'Ifeoma Egbogah'
 )
 
 
@@ -178,8 +178,8 @@ if (length(links3)) {
   cat(links3, sep = '\n')
 }
 
-local({
-  if (!dir.exists(d <- '../kbroman-blog/content/')) return()
+#local({
+#  if (!dir.exists(d <- '../kbroman-blog/content/')) return()
   # unlink(file.path(d, 'post'), recursive = TRUE)
   file.copy('post', d, recursive = TRUE)
 })
